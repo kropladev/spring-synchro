@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpss/!svn/ver/24877/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/directory
+END
+ParticipantBpm.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/directory/ParticipantBpm.java
+END
+IParticipant.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/directory/IParticipant.java
+END
+DirSession.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/bpss/!svn/ver/24877/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/directory/DirSession.java
+END
+FdiClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/bpss/!svn/ver/24877/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/directory/FdiClient.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/user
+END
+IUserCollectionActions.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/user/IUserCollectionActions.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/user/User.java
+END
+UserCollection.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/user/UserCollection.java
+END
+IUsersCollectionWithModSym.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/user/IUsersCollectionWithModSym.java
+END
+UserCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/user/UserCode.java
+END
+UserCollectionHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/bpss/!svn/ver/24919/devel/SLS_APP/SPRING/synchro-bpss-users/trunk/src/main/java/pl/nordea/synchro/user/UserCollectionHelper.java
+END
