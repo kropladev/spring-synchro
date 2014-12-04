@@ -1,4 +1,4 @@
-spring-synchro-bpss
+spring-synchro
 ===============
 
-synchronisation of the bpss user accounts with LDAP and roles definitions. Version for cluser ienvironments.
+synchronisation of the system user accounts with LDAP and roles definitions. Version for cluser ienvironments.
