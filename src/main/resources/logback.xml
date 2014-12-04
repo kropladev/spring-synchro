@@ -1,14 +1,37 @@
-<configuration>
+<configuration scan="true" scanPeriod="30 seconds" > 
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+         <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+         <File>/home/weblogic/log/synchroBpss/synchro.log</File>
+         <withJansi>true</withJansi>
+         <encoder>
+             <pattern>%blue(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%5p) %cyan([%logger %M.%L]) - %m%n</pattern>
+         </encoder>
+         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <maxIndex>1</maxIndex>
+            <FileNamePattern>/home/weblogic/log/synchroBpss/synchro.log.%i</FileNamePattern>
+         </rollingPolicy>
+         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>1MB</MaxFileSize>
+         </triggeringPolicy>
+       </appender>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <withJansi>true</withJansi>
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+      <pattern>%blue(%d{HH:MM:ss.SSS}) %highlight(%5p) %cyan([%logger{36}]) - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <root level="debug">
+  <logger name="pl.nordea.synchro.controller.SynchroMainPage">
+        <level value="INFO"/>
+        <appender-ref ref="STDOUT"/>
+  </logger>
+
+  <root level="INFO">
     <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
   </root>
 </configuration>

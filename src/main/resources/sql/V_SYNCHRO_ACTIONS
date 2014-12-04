@@ -1,0 +1,103 @@
+CREATE OR REPLACE VIEW BPSS_ADMIN.V_SYNCHRO_ACTIONS AS
+select
+--------------------------------------------------------------------------
+-- #copyrights NORDEA BANK POLSKA SA
+--------------------------------------------------------------------------
+-- #svn_id   $Id:$
+-- #svn_date $Date:$
+-- #svn_rev  $Rev:$
+--------------------------------------------------------------------------
+-- #name     V_SYNCHRO_ACTIONS
+-- #descr    View for selecting  users to be added, disabled or activated in BPM engine.
+--------------------------------------------------------------------------
+-- #throws
+-- #uses
+--------------------------------------------------------------------------
+-- #author   Maciej Kroplewski (m010678)
+-- #created  2013-12-10
+-- #project  BPSS
+--------------------------------------------------------------------------
+--- users to disable
+sign_on_name, cunit_id, action_to_do, user_name from (
+(
+--list of active users in engine
+SELECT * from
+    (SELECT upper(fuego_rid) AS sign_on_name, cunit_id,'DISABLE' action_to_do,'' user_name
+        FROM BPSS_ADMIN.V_fuego_participant p
+        WHERE p.fuego_status != 'D'
+        AND cunit_id!=0 )
+MINUS
+--list of active users from t24
+SELECT CAST(upper(s.sign_on_name) AS NVARCHAR2(100)) AS sign_on_name, s.cunit_id AS cunit_id,'DISABLE' action_to_do,'' user_name
+    FROM BPSS_ADMIN.v_synchro_active_users s
+)
+union all
+(
+--- users to create
+SELECT CAST(u.u_user AS NVARCHAR2(100)) AS sign_on_name, u_cunit_id AS cunit_id, /*u.u_mail */ 'CREATE' AS action_to_do,u_user_name AS user_name
+        FROM BPSS_ADMIN.users u
+        WHERE u.u_profile_end_date > SYSDATE
+        --AND u.U_PROFILE_START_DATE < SYSDATE
+        AND lower(u.u_user) NOT IN (SELECT fuego_id FROM v_fuego_participant)
+        --AND u.u_cunit_id = $cunitId
+       -- ORDER BY u_user
+)
+union all
+(
+--- users to activate
+    SELECT CAST(s.sign_on_name AS NVARCHAR2(100)) AS sign_on_name, s.cunit_id AS cunit_id,'ACTIVATE' action_to_do,'' user_name
+    FROM BPSS_ADMIN.v_synchro_active_users s
+        INNER JOIN BPSS_ADMIN.V_fuego_participant p ON upper(p.FUEGO_RID) = upper(s.sign_on_name)
+    WHERE p.fuego_status  = 'D'
+        AND s.cunit_id = p.cunit_id
+)
+union all
+(
+--- users to change country
+  SELECT cast( p.FUEGO_RID  as nvarchar2(100))AS sign_on_name, a.cunit_id as cunit_id,
+           'CH_COUNTRY' action_to_do,'' AS user_name
+    FROM BPSS_ADMIN.v_fuego_participant p
+        INNER JOIN bpss_admin.v_synchro_active_users a ON upper(p.FUEGO_RID) = upper(a.sign_on_name)
+    WHERE p.fuego_status = 'A'
+        AND p.cunit_id != a.cunit_id
+)
+union all
+(
+---users to change name
+select distinct cast(au.sign_on_name as nvarchar2(100)) as sign_on_name,
+                au.cunit_id as cunit_id,
+                'CH_NAME' action_to_do,
+                au.user_name as user_name
+    FROM BPss_admin.v_Synchro_Active_Users au, bpss_admin.v_fuego_participant fp
+    WHERE au.sign_on_name=fp.FUEGO_RID
+    AND user_name!=fp.FUEGO_DISPLAYNAME
+)
+union all
+(
+---users to change email
+select distinct cast(u.u_user as nvarchar2(100)) as sign_on_name,u.u_cunit_id as cunit_id,'CH_EMAIL' action_to_do,u.u_mail as user_name
+    FROM BPSS_ADMIN.users u, bpss_admin.v_fuego_participant fp
+    WHERE u.u_user=fp.FUEGO_RID
+    AND u.u_mail != fp.FUEGO_MAIL
+)
+union all
+SELECT DISTINCT cast(u.u_user as nvarchar2(100)) as sign_on_name,u.u_cunit_id AS cunit_id, 'CH_ROLE' action_to_do,'' user_name
+    FROM BPSS_ADMIN.users u
+        INNER JOIN user_positions up ON u.u_user = up.up_user
+        INNER JOIN position p ON up.up_position = p.p_position
+        INNER JOIN position_roles pr ON p.p_position = pr.pr_position
+        LEFT JOIN role_attributes ra ON pr.pr_role_id = ra.ra_role_id
+        LEFT JOIN user_role_param urp ON urp.upr_user_id = u.u_user
+    WHERE trunc(sysdate) between u.u_profile_start_date and u.u_profile_end_date
+    AND ( u.u_last_synchro_date IS NULL
+            OR (
+                   (u.u_last_synchro_date < pr.pr_modified_on AND pr.pr_modified_on IS NOT NULL)
+                OR (u.u_last_synchro_date < up.up_modified_on AND up.up_modified_on IS NOT NULL)
+                OR (u.u_last_synchro_date < p.p_modified_on AND p.p_modified_on IS NOT NULL)
+                OR (u.u_last_synchro_date < ra.ra_modified_on AND ra.ra_modified_on IS NOT NULL )
+                OR (u.u_last_synchro_date < urp.upr_modified_on AND urp.upr_modified_on IS NOT NULL)
+                OR (u.u_last_synchro_date < u.u_modified_on AND u.u_modified_on IS NOT NULL)
+               )
+        )
+)
+;

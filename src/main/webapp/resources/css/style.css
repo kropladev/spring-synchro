@@ -1,0 +1,53 @@
+body{margin:0px;}
+
+.noBorderTable td{border:0;}
+.noBorderTable {border:0;}
+.noBorderTable input{width:400px; }
+
+table, td, th{border:0px solid blue;}
+/* th{background-color:blue;color:white;} */
+tr.alt td {color:#000000;background-color:#55aaff;}
+#dateTime_display{color:#000000;background-color:#99bbff;font-size:14px;}
+
+label{display: block;width:100px;float:left;}
+.dataInput{display: block;width:100px;float:left; margin:0 50px 0 0;}
+.labelOptions{display: block;width:600px;float:left;}
+.label2Options{display: block;width:148px;float:left;}
+.submitButton{width:100px;}
+table.header {background-color: #003366; width:100%; display:block; border:none;}
+td.headerTitle{color: white; font-size: 20px; font-weight: bold; padding-left:20%; background-color: #003366; width:100%;}
+table.header tr td{background-image:url('../img/topimage.jpg');background-repeat: repeat-x;border:none;}
+#nordeaLogo{}
+.clearFloat{clear:both;}
+.iconInfo{width:32px;float:left; margin:20px 40px 20px 40px;}
+#infoDesc{float:left;}
+.container{margin:10px;}
+#menu{ width:9%;margin-top: 3%;}
+#line{ width:2px; height:98%; background-color:#084B8A; left:10%; top:110px; position:absolute;}
+#main{margin-top:30px; margin-left:70px; width:55%}
+#tableContainer{ width:100%; margin-top:5%;}
+#buttonset{margin-top: 20px;}
+#dirFileSubmit{float:right;}
+.panels {padding:20px; margin-top:20px;}
+.leftFloat{float:left;}
+.buttonDefault:hover{
+	background-color: #F7FCFF;
+}
+.buttonDefault {
+background-color: #E5EAEF;
+border-color: #779ABC;
+border-style: double solid solid double;
+border-width: 3px;
+cursor: pointer;
+font-family: Verdana,Arial,Tahoma,Helvetica,Sans-serif;
+font-size: 90%;
+font-size-adjust: none;
+font-stretch: normal;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+line-height: normal;
+margin: 1px 0 0 10px;
+text-align: center;
+width: 102px;
+}

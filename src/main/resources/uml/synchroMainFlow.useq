@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.5" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="org.springframework.scheduling.quartz.JobDetailFactoryBean" 
+    project="synchro-bpss-users" 
+    file="C:/REPO/MVN/main/org/springframework/spring-context-support/3.2.6.RELEASE/spring-context-support-3.2.6.RELEASE.jar" 
+    binary="true" label="jobDetailFactoryBean" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="541" y="0"/>    
+    <execution id="2">      
+      <position height="984" width="167" x="5" y="99"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="pl.nordea.synchro.core.job.SynchroJob" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/core/job/SynchroJob.java" binary="false" 
+    label="synchroJob" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="268" y="0"/>    
+    <execution id="4">      
+      <position height="942" width="118" x="176" y="120"/>    
+    </execution>  
+  </object>  
+  <object id="8" language="java" name="pl.nordea.synchro.core.job.ISynchroWork" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/core/job/ISynchroWork.java" binary="false" 
+    label="iSynchroWork" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="381" y="0"/>    
+    <execution id="7">      
+      <position height="900" width="118" x="298" y="141"/>    
+    </execution>  
+  </object>  
+  <object id="11" language="java" name="pl.nordea.synchro.core.ISynchroActions" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/core/ISynchroActions.java" binary="false" 
+    label="iSynchroActions" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="508" y="0"/>    
+    <execution id="10">      
+      <position height="858" width="116" x="420" y="162"/>    
+    </execution>  
+  </object>  
+  <object id="22" language="java" name="pl.nordea.synchro.utils.AppProps" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/utils/AppProps.java" binary="false" label="appProps" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="647" y="0"/>    
+    <execution id="13">      
+      <position height="181" width="102" x="540" y="183"/>    
+    </execution>    
+    <execution id="26">      
+      <position height="21" width="7" x="588" y="322"/>    
+    </execution>  
+  </object>  
+  <object id="27" language="java" name="pl.nordea.synchro.utils.SynchroPropsService" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/utils/SynchroPropsService.java" binary="false" 
+    label="synchroPropsService" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="815" y="0"/>    
+    <execution id="24">      
+      <position height="126" width="147" x="646" y="204"/>    
+    </execution>    
+    <execution id="29">      
+      <position height="63" width="7" x="716" y="246"/>    
+    </execution>  
+  </object>  
+  <object id="32" language="java" name="pl.nordea.synchro.ldap.ILdapService" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/ldap/ILdapService.java" binary="false" 
+    label="iLdapService" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="1100" y="0"/>    
+    <execution id="15">      
+      <position height="297" width="102" x="956" y="375"/>    
+    </execution>    
+    <execution id="43">      
+      <position height="21" width="102" x="797" y="925"/>    
+    </execution>  
+  </object>  
+  <object id="44" language="java" name="pl.nordea.synchro.ldap.ImplLdap" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/ldap/ImplLdap.java" binary="false" label="implLdap" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="1143" y="0"/>    
+    <execution id="36">      
+      <position height="63" width="102" x="1196" y="425"/>    
+    </execution>    
+    <execution id="38">      
+      <position height="63" width="102" x="1196" y="491"/>    
+    </execution>    
+    <execution id="40">      
+      <position height="21" width="102" x="1196" y="560"/>    
+    </execution>    
+    <execution id="42">      
+      <position height="63" width="102" x="1196" y="588"/>    
+    </execution>  
+  </object>  
+  <object id="51" language="java" name="pl.nordea.synchro.ldap.model.ILdapUsersDao" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/ldap/model/ILdapUsersDao.java" binary="false" 
+    label="iLdapUsersDao" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="1182" y="0"/>    
+    <execution id="34">      
+      <position height="21" width="130" x="1062" y="396"/>    
+    </execution>    
+    <execution id="48">      
+      <position height="21" width="130" x="1168" y="512"/>    
+    </execution>  
+  </object>  
+  <object id="52" language="java" name="pl.nordea.synchro.ldap.model.IRepoBpssAdminUsersDao" 
+    project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/ldap/model/IRepoBpssAdminUsersDao.java" binary="false" 
+    label="iRepoBpssAdminUsersDao" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="1251" y="0"/>    
+    <execution id="46">      
+      <position height="21" width="176" x="1302" y="446"/>    
+    </execution>    
+    <execution id="50">      
+      <position height="21" width="176" x="1302" y="609"/>    
+    </execution>  
+  </object>  
+  <object id="53" language="java" name="pl.nordea.synchro.user.IUsersService" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/user/IUsersService.java" binary="false" 
+    label="iUsersService" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="1392" y="0"/>    
+    <execution id="17">      
+      <position height="147" width="103" x="1482" y="677"/>    
+    </execution>    
+    <execution id="21">      
+      <position height="21" width="103" x="1323" y="978"/>    
+    </execution>  
+  </object>  
+  <object id="56" language="java" name="pl.nordea.synchro.user.ImplUsersService" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/user/ImplUsersService.java" binary="false" 
+    label="implUsersService" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="1437" y="0"/>    
+    <execution id="55">      
+      <position height="105" width="124" x="1430" y="698"/>    
+    </execution>  
+  </object>  
+  <object id="61" language="java" name="pl.nordea.synchro.user.model.IUserListDao" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/user/model/IUserListDao.java" binary="false" 
+    label="userAccountsDao" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="58">      
+      <position height="21" width="0" x="0" y="719"/>    
+    </execution>  
+  </object>  
+  <object id="62" language="java" name="pl.nordea.synchro.user.model.IUserCollectionDao" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/user/model/IUserCollectionDao.java" binary="false" 
+    label="usersForAction" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="60">      
+      <position height="21" width="0" x="0" y="761"/>    
+    </execution>  
+  </object>  
+  <object id="63" language="java" name="pl.nordea.synchro.directory.IDirectoryActions" project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/directory/IDirectoryActions.java" binary="false" 
+    label="iDirectoryActions" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="1855" y="0"/>    
+    <execution id="19">      
+      <position height="135" width="122" x="1828" y="832"/>    
+    </execution>  
+  </object>  
+  <object id="71" language="java" name="pl.nordea.synchro.directory.model.IDirParticipantDao" 
+    project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/directory/model/IDirParticipantDao.java" binary="false" 
+    label="iDirParticipantDao" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="1947" y="0"/>    
+    <execution id="65">      
+      <position height="21" width="149" x="1954" y="853"/>    
+    </execution>    
+    <execution id="67">      
+      <position height="21" width="149" x="1954" y="877"/>    
+    </execution>    
+    <execution id="69">      
+      <position height="21" width="149" x="1954" y="911"/>    
+    </execution>  
+  </object>  
+  <object id="72" language="java" name="pl.nordea.synchro.utils.model.ISynchroPropertiesDao" 
+    project="synchro-bpss-users" 
+    file="/synchro-bpss-users/src/main/java/pl/nordea/synchro/utils/model/ISynchroPropertiesDao.java" binary="false" 
+    label="iSynchroPropertiesDao" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="942" y="0"/>    
+    <execution id="31">      
+      <position height="21" width="155" x="797" y="267"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="executeInternal(org.quartz.JobExecutionContext):void">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="runSynchro():void">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="9" operation="startSynchronisationProcess():void">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="12" operation="loadProperties():void">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="14" operation="synchronizeLdapDataWithBpssAdminSchema():void">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" operation="collectUsersForSynchroFromCoreSystem():void">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" operation="performChangesOnDirectory():void">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" operation="flushUsersCollection():void">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="23" operation="loadProperties(java.lang.String):java.util.Properties">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="25" operation="checkBaseProperties():void">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="26"/>  
+  </message>  
+  <message id="28" operation="getAllSynchroProperties(java.lang.String):java.util.List&lt;SynchroProperties&gt;">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="30" operation="getAllSynchroProperties(java.lang.String):java.util.List&lt;SynchroProperties&gt;">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="31"/>  
+  </message>  
+  <message id="33" operation="getConnectProperties():void">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="34"/>  
+  </message>  
+  <message id="35" operation="prepareListOfAllUsersFromBpssAdmin():void">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="36"/>  
+  </message>  
+  <message id="37" operation="prepareListOfAllUsersFromLdap():void">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="38"/>  
+  </message>  
+  <message id="39" operation="synchronizeListsOfUsers():void">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="40"/>  
+  </message>  
+  <message id="41" operation="sendChangesToDatabaseUsingBatch():void">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="42"/>  
+  </message>  
+  <message id="45" operation="collectAllBpssAdmnUsersMap():java.util.Map&lt;String,LdapBpssAdminUser&gt;">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="46"/>  
+  </message>  
+  <message id="47" operation="getAllUsers():java.util.List&lt;LdapUserRecPojo&gt;">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="48"/>  
+  </message>  
+  <message id="49" 
+    operation="updateBatch(java.util.List&lt;pl.nordea.synchro.ldap.model.enties.LdapBpssAdminUser&gt;):void">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="50"/>  
+  </message>  
+  <message id="54" operation="prepareUserMapForSynchronisation(pl.nordea.synchro.core.SynchroActionEnum,int):int">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="55"/>  
+  </message>  
+  <message id="57" 
+    operation="collectUsersForSpecificAction(int,pl.nordea.synchro.core.SynchroActionEnum):java.util.List&lt;PojoUser&gt;">    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="58"/>  
+  </message>  
+  <message id="59" 
+    operation="markUserForActionChange(pl.nordea.synchro.user.model.enties.PojoUser,pl.nordea.synchro.core.SynchroActionEnum):void">    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="60"/>  
+  </message>  
+  <message id="64" operation="fetchParticipantBpm(java.lang.String):void">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="65"/>  
+  </message>  
+  <message id="66">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="67"/>  
+  </message>  
+  <message id="68" operation="store():void">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="69"/>  
+  </message>  
+  <message id="70" operation="updateUserLastSynchroDate(java.lang.String):void">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="43"/>  
+  </message>
+</sequence-diagram>

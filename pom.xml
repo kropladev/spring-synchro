@@ -1,24 +1,51 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>synchro-bpss-users</groupId>
-	<artifactId>pl.nordea.synchrobpss</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>pl.nordea.synchrobpss</groupId>
+	<artifactId>synchro-bpss-users</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<properties>
-		<spring.version>3.2.5.RELEASE</spring.version>
-		<spring.data.version>1.4.2.RELEASE</spring.data.version>
-		<com.albpm.version>1.0</com.albpm.version>
+
+		<!-- Generic properties -->
+		<java.version>1.6</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<compiler.version>1.6</compiler.version>
 		<maven.version>3.0</maven.version>
-		<com.oracle.ojdbc.version>11.2.0.4</com.oracle.ojdbc.version>
-		<ch.logback.version>1.0.13</ch.logback.version>
-		<javax.jta.version>1.1</javax.jta.version>
-		<org.slf4j.version>1.7.5</org.slf4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Web -->
+		<jsp.version>2.2</jsp.version>
+		<jstl.version>1.2</jstl.version>
+		<servlet.version>2.5</servlet.version>
+
+		<!-- Spring -->
+		<spring-framework.version>3.2.6.RELEASE</spring-framework.version>
+		<spring-jpa.version>1.5.0.RELEASE</spring-jpa.version>
+		<!-- OBPM libraries -->
+		<albpm.version>1.0</albpm.version>
+
+		<!-- Oracle Jdbc -->
+		<oracle.ojdbc.version>11.2.0.4</oracle.ojdbc.version>
+
+		<!-- Logging -->
+		<logback.version>1.0.13</logback.version>
+		<slf4j.version>1.7.5</slf4j.version>
+
+		<!-- Test -->
+		<junit.version>4.11</junit.version>
+
+		<!-- Others utils -->
+		<jasypt.version>1.9.1</jasypt.version>
+		<guava.version> 15.0</guava.version>
+		<joda.version> 2.3</joda.version>
+		<quartz-version>2.2.1</quartz-version>
+
 	</properties>
 
 	<build>
+	<finalName>bpss-synchro-process</finalName>  
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -28,77 +55,333 @@
 					<target>${compiler.version}</target>
 				</configuration>
 			</plugin>
+
+		<!--  <plugin>
+				<groupId>com.oracle.weblogic</groupId>
+				<artifactId>weblogic-maven-plugin</artifactId>
+				<version>10.3.4</version>
+				<configuration>
+					<adminurl>t3://10.0.52.124:7002</adminurl>
+					<user>weblogic</user>
+					<password>weblogic1</password>
+					<upload>true</upload>
+					<targets>Spring-Cluster</targets>
+					<action>deploy</action>
+					<remote>false</remote>
+					<verbose>false</verbose>
+					<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+					<name>${project.build.finalName}</name>
+					 <path>/bpss-synchro</path> 
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			 --> 
+
+
 		</plugins>
 	</build>
 	<dependencies>
+
+  <dependency>  
+   <groupId>commons-fileupload</groupId>  
+   <artifactId>commons-fileupload</artifactId>  
+   <version>1.2.2</version>  
+  </dependency>  
+  
+  <!-- Apache Commons Upload -->  
+  <dependency>  
+   <groupId>commons-io</groupId>  
+   <artifactId>commons-io</artifactId>  
+   <version>1.3.2</version>  
+  </dependency> 
+		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>${spring.data.version}</version>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-framework.version}</version>
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- Other Spring dependencies -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- Oracle JDBC driver -->
+		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc5</artifactId>
-			<version>${com.oracle.ojdbc.version}</version>
+			<version>${oracle.ojdbc.version}</version>
 		</dependency>
+
 		<dependency>
-			<groupId>com.albpm</groupId>
-			<artifactId>fuegopapi</artifactId>
-			<version>${com.albpm.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-framework.version}</version>
 		</dependency>
+
+
+
 		<dependency>
-			<groupId>com.albpm</groupId>
-			<artifactId>b1base</artifactId>
-			<version>${com.albpm.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-framework.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.albpm</groupId>
-			<artifactId>b1oracle</artifactId>
-			<version>${com.albpm.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.albpm</groupId>
-			<artifactId>b1util</artifactId>
-			<version>${com.albpm.version}</version>
-		</dependency>
+		
+ 		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.1.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.2.0.Final</version>
+        </dependency>
+		
+		<!-- Logging with SLF4J & LogBack -->
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>${ch.logback.version}</version>
+			<version>${slf4j.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>${ch.logback.version}</version>
+			<version>${logback.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- External libraries ALBM -->
+		<dependency>
+			<groupId>com.albpm</groupId>
+			<artifactId>fuegopapi</artifactId>
+			<version>${albpm.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>jta</artifactId>
-			<version>${javax.jta.version}</version>
+			<groupId>com.albpm</groupId>
+			<artifactId>b1base</artifactId>
+			<version>${albpm.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.albpm</groupId>
+			<artifactId>b1oracle</artifactId>
+			<version>${albpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.albpm</groupId>
+			<artifactId>b1util</artifactId>
+			<version>${albpm.version}</version>
+		</dependency>
+
+		<!-- Other Utils Libs -->
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>${jasypt.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz-version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+
+		<!-- testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+
 	</dependencies>
 
-	<repositories>
+  <distributionManagement>
 		<repository>
-			<id>nordea-repository</id>
-			<name>Nordea Nexus repo</name>
-			<layout>default</layout>
-			<url>http://10.0.52.97:9001/nexus/content/groups/nordea-repos/</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</releases>
+			<id>sods-fe-app1-nexus</id>
+			<url>http://10.0.53.88:9001/nexus/content/repositories/snapshots</url>
 		</repository>
-	</repositories>
+		<snapshotRepository>
+			<id>sods-fe-app1-nexus</id>
+			<url>http://10.0.53.88:9001/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<packaging>war</packaging>
+	
+	
+		<profiles>
+		<profile>
+			<id>wlsDeploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<version>10.3.4</version>
+						<configuration>
+							<adminurl>${weblogic.url}</adminurl>
+							<user>${weblogic.username}</user>
+							<password>${weblogic.password}</password>
+							<targets>${weblogic.targets}</targets>
+							<upload>true</upload>
+							<action>deploy</action>
+							<remote>false</remote>
+							<verbose>true</verbose>
+							<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+							<name>${project.name}</name>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>wlsUndeploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<version>10.3.4</version>
+						<configuration>
+							<adminurl>${weblogic.url}</adminurl>
+							<user>${weblogic.username}</user>
+							<password>${weblogic.password}</password>
+							<targets>${weblogic.targets}</targets>
+							<action>undeploy</action>
+							<remote>false</remote>
+							<verbose>true</verbose>
+							<name>${project.name}</name>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>clean</phase>
+								<goals>
+									<goal>undeploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+ 		
+ 		<profile>
+			<id>slsn1</id>
+			<properties>
+				<weblogic.url>t3://10.0.52.242:7001</weblogic.url>
+				<weblogic.username>weblogic</weblogic.username>
+				<weblogic.password>weblogic1</weblogic.password>
+				<weblogic.targets>spring</weblogic.targets>
+			</properties>
+		</profile>
+ 		
+		<profile>
+			<id>wlsIT</id>
+			<properties>
+				<weblogic.url>t3://10.0.52.253:7001</weblogic.url>
+				<weblogic.username>weblogic</weblogic.username>
+				<weblogic.password>weblogic1</weblogic.password>
+				<weblogic.targets>IT</weblogic.targets>
+			</properties>
+		</profile>
+		<profile>
+			<id>wlsSls</id>
+			<properties>
+				<weblogic.url>t3://10.0.52.253:7001</weblogic.url>
+				<weblogic.username>weblogic</weblogic.username>
+				<weblogic.password>weblogic1</weblogic.password>
+				<weblogic.targets>sls1_sc1</weblogic.targets>
+			</properties>
+		</profile>
+		<profile>
+			<id>wlsLocal</id>
+			<properties>
+				<weblogic.url>t3://localhost:7001</weblogic.url>
+				<weblogic.username>weblogic</weblogic.username>
+				<weblogic.password>weblogic01</weblogic.password>
+				<weblogic.targets>myserver</weblogic.targets>
+			</properties>
+		</profile>
+		<profile>
+			<id>wlsAlpha</id>
+			<properties>
+				<weblogic.url>t3://10.0.52.239:7301</weblogic.url>
+				<weblogic.username>jenkins</weblogic.username>
+				<weblogic.password>j3nk1n5u53r</weblogic.password>
+				<weblogic.targets>AdminServer</weblogic.targets>
+			</properties>
+		</profile>
+ 
+		<profile>
+			<id>wlsAccept</id>
+			<properties>
+				<weblogic.url>t3://10.0.53.59:7301</weblogic.url>
+				<weblogic.username>${weblogic.accept.username}</weblogic.username>
+				<weblogic.password>${weblogic.accept.password}</weblogic.password>
+				<weblogic.targets>NEMIS-SC-CLUSTER</weblogic.targets>
+			</properties>
+		</profile>
+ 
+		<profile>
+			<id>wlsPrelive</id>
+			<properties>
+				<weblogic.url>t3://10.0.53.62:7301</weblogic.url>
+				<weblogic.username>${weblogic.prelive.username}</weblogic.username>
+				<weblogic.password>${weblogic.prelive.password}</weblogic.password>
+				<weblogic.targets>NEMIS-SC-CLUSTER</weblogic.targets>
+			</properties>
+		</profile>
+	</profiles>
 </project>
